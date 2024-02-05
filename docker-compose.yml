@@ -1,3 +1,4 @@
+#docker-compose.yml
 version: '3'
 services:
   app:
@@ -13,7 +14,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 1206
-      MYSQL_DATABASE: culture_oopy
+      MYSQL_DATABASE: culture-oopy
     volumes:
       - db_data:/var/lib/mysql
 volumes:
