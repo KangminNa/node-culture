@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on: 
+      - db
+    environment:
+      DB_HOST: db
+  db:
+    image: mariadb:10.5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1206
+      MYSQL_DATABASE: culture_oopy
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data: {}

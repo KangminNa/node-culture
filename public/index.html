@@ -8,27 +8,18 @@
     <title>File Upload</title>
 </head>
 <body>
-    <form>
-        <!-- 각 파일 input에 대한 onChange 이벤트로 파일 이름 업데이트 -->
-        <input type="file" id="file_recommendation" onchange="updateFileName('file_recommendation', 'output_recommendation')">
-        <input type="text" id="output_recommendation" readonly>
-        
-        <input type="file" id="file_portpolio" onchange="updateFileName('file_portpolio', 'output_portpolio')">
-        <input type="text" id="output_portpolio" readonly>
-        
-        <input type="file" id="file_resume" onchange="updateFileName('file_resume', 'output_resume')">
-        <input type="text" id="output_resume" readonly>
-
-        <input type="text" id="userdep" placeholder="Department">
-        <input type="text" id="username" placeholder="Name">
-        <input type="email" id="useremail" placeholder="Email">
-        <input type="tel" id="userphone" placeholder="Phone">
-
-        <button type="button" onclick="submitForm()">Submit</button>
-    </form>
+    <!-- 표시할 데이터를 보여주는 부분 -->
+    <div id="output"></div>
 
     <script>
-        // updateFileName과 submitForm 함수는 이미 포함되어 있으므로 여기에 추가로 작성할 필요 없음
+        // 서버에서 데이터를 가져와서 화면에 표시
+        fetch('http://localhost:3000/api/getData') // 실제 엔드포인트를 사용해야 합니다.
+            .then(response => response.json())
+            .then(data => {
+                // 가져온 데이터를 화면에 표시
+                document.getElementById('output').innerHTML = JSON.stringify(data);
+            })
+            .catch(error => console.error('Error:', error));
     </script>
 </body>
 </html>
